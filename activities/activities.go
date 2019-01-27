@@ -37,3 +37,14 @@ func del(id string) {
 	fmt.Println(activities)
 
 }
+
+func delByRef(ref string) {
+
+	for i, a := range activities {
+		if a.Ref == ref {
+			activities = append(activities[:i], activities[i+1:]...)
+		}
+	}
+	fmt.Println(activities)
+
+}

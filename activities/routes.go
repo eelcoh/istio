@@ -21,6 +21,13 @@ var routes = api.Routes{
 	),
 
 	api.NewRoute(
+		"Delete Activity By Refererence",
+		"DELETE",
+		"/ref/{ref}",
+		deleteActivityByReference,
+	),
+
+	api.NewRoute(
 		"Delete Activity",
 		"DELETE",
 		"/{id}",

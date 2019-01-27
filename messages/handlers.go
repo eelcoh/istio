@@ -50,8 +50,15 @@ func deleteMessage(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(params)
 	id := params["id"]
 
+	erase := r.URL.Query().Get("erase")
+
 	del(id)
-	logDelete(id)
+
+	if erase == "true" {
+		deleteLog(id)
+	} else {
+		logDelete(id)
+	}
 
 	returnMessages(w, r)
 

@@ -55,6 +55,17 @@ func deleteActivity(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func deleteActivityByReference(w http.ResponseWriter, r *http.Request) {
+	fmt.Print("deleting by ref..")
+	params := mux.Vars(r)
+	fmt.Println(params)
+	ref := params["ref"]
+
+	delByRef(ref)
+
+	returnActivities(w, r)
+
+}
 func returnActivities(w http.ResponseWriter, r *http.Request) {
 
 	err := json.NewEncoder(w).Encode(activities)
