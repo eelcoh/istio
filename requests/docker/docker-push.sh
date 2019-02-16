@@ -1,8 +1,8 @@
 #!/bin/bash
 
-image=eelcoh/service-requests:$1
+image=eelcoh/poc.istio.requests:$1
 
-docker tag service-requests $image && docker push $image
+docker tag poc.istio.requests $image && docker push $image
 
 
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-image=eelcoh/token:$1
+image=eelcoh/poc.istio.tokens:$1
 
-docker tag token $image && docker push $image
+docker tag poc.istio.tokens $image && docker push $image
 
 
 

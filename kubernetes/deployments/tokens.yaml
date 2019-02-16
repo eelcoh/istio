@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata: 
-  name: activities-dep
+  name: tokens-dep
 spec: 
   replicas: 3 
 
@@ -10,18 +10,18 @@ spec:
     type: "RollingUpdate"
   selector:
     matchLabels:
-      name: "activities"
+      app: "tokens"
 
   template: 
     metadata: 
-      name: activities-pod 
+      name: tokens 
       labels: 
-        app: activities 
+        app: tokens 
         
     spec: 
       containers: 
-        - image: eelcoh/activities:v1 
-          name: activities
+        - image: eelcoh/poc.istio.tokens:0.0.1 
+          name: tokens
           ports: 
             - containerPort: 8080 
               protocol: TCP

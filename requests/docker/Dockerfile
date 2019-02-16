@@ -1,6 +1,6 @@
 FROM scratch
 LABEL maintainer "Eelco Hoekema <ehoekema@gmail.com>"
-ADD bin/service-requests service-requests
+ADD bin/requests requests
 
 EXPOSE 8080
-ENTRYPOINT ["/service-requests"]
+ENTRYPOINT ["/requests"]

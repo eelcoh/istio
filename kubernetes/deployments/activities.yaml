@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata: 
+  name: activities-dep
+spec: 
+  replicas: 3 
+
+  revisionHistoryLimit: 5
+  strategy:
+    type: "RollingUpdate"
+  selector:
+    matchLabels:
+      app: "activities"
+
+  template: 
+    metadata: 
+      name: activities 
+      labels: 
+        app: activities 
+        
+    spec: 
+      containers: 
+        - image: eelcoh/poc.istio.activities:0.0.2
+          name: activities
+          ports: 
+            - containerPort: 8080 
+              protocol: TCP
+
+

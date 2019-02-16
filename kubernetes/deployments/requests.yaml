@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata: 
+  name: requests-dep
+spec: 
+  replicas: 3 
+
+  revisionHistoryLimit: 5
+  strategy:
+    type: "RollingUpdate"
+  selector:
+    matchLabels:
+      app: "requests"
+
+  template: 
+    metadata: 
+      name: requests 
+      labels: 
+        app: requests 
+        
+    spec: 
+      containers: 
+        - image: eelcoh/poc.istio.requests:0.0.1 
+          name: requests
+          ports: 
+            - containerPort: 8080 
+              protocol: TCP
+
+
