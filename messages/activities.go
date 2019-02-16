@@ -54,9 +54,9 @@ func logActivity(t string, activity string, ref string) {
 
 func deleteLog(ref string) {
 
-	url := fmt.Sprintf("%s/ref/%s", activitiesUrl, ref)
+	url := fmt.Sprintf("%sref/%s", activitiesUrl, ref)
 
-	fmt.Println("***** URL: *****", ref)
+	fmt.Println("***** URL: *****", url)
 
 	req, err := http.NewRequest("DELETE", url, nil)
 	if err != nil {
@@ -64,9 +64,6 @@ func deleteLog(ref string) {
 		fmt.Println(err)
 		panic(err)
 	}
-
-	req.Header.Set("X-Custom-Header", "myvalue")
-	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{
 		Timeout: time.Second * 10,
@@ -78,9 +75,9 @@ func deleteLog(ref string) {
 	}
 	defer resp.Body.Close()
 
-	fmt.Println("request URL:", activitiesUrl)
-	fmt.Println("response Status:", resp.Status)
-	fmt.Println("response Headers:", resp.Header)
-	body, _ := ioutil.ReadAll(resp.Body)
-	fmt.Println("response Body:", string(body))
+	// fmt.Println("request URL:", url)
+	// fmt.Println("response Status:", resp.Status)
+	// fmt.Println("response Headers:", resp.Header)
+	// body, _ := ioutil.ReadAll(resp.Body)
+	// fmt.Println("response Body:", string(body))
 }

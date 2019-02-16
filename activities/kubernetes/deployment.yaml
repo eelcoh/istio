@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata: 
+  name: activities-dep
+spec: 
+  replicas: 3 
+
+  revisionHistoryLimit: 5
+  strategy:
+    type: "RollingUpdate"
+  selector:
+    matchLabels:
+      name: "activities"
+
+  template: 
+    metadata: 
+      name: activities-pod 
+      labels: 
+        app: activities 
+        
+    spec: 
+      containers: 
+        - image: eelcoh/activities:v1 
+          name: activities
+          ports: 
+            - containerPort: 8080 
+              protocol: TCP
+
+

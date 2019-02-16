@@ -52,6 +52,9 @@ func deleteMessage(w http.ResponseWriter, r *http.Request) {
 
 	erase := r.URL.Query().Get("erase")
 
+	fmt.Println("--> ", id)
+	fmt.Println(" x --> ", erase)
+
 	del(id)
 
 	if erase == "true" {
@@ -74,7 +77,8 @@ func returnMessages(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	// w.WriteHeader(http.StatusOK)
+	fmt.Print(prettyPrint(messages))
+
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
 }
@@ -94,4 +98,9 @@ func logDelete(id string) {
 	ref := fmt.Sprintf("%s", id)
 
 	logActivity(t, actStr, ref)
+}
+
+func prettyPrint(i interface{}) string {
+	s, _ := json.MarshalIndent(i, "", "\t")
+	return string(s)
 }

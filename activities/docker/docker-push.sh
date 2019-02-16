@@ -1,8 +1,14 @@
 #!/bin/bash
 
-image=eelcoh/activity-log:$1
+image=docker-registry-default.127.0.0.1.nip.io:80/istio-poc/activity:$1
+# docker push docker-registry-default.127.0.0.1.nip.io:80/myproject/alpine
+		
+docker tag activity:latest $image
 
-docker tag token $image && docker push $image
+	if [[ $? -eq 0 ]]; then
+		docker push $image
+	fi
+# docker tag activity $image && docker push $image
 
 
 
